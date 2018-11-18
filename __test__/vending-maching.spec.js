@@ -21,12 +21,14 @@ describe("VendingMachine", () => {
       });
     });
     describe("Vending machine is out of chips", () => {
-      it("should return no change in machine", () => {
-        expect(vendingMachine3.dispenseItem("chips", 5.0)).toBe("None left");
+      it("should return Vending machine is out of chips", () => {
+        expect(vendingMachine3.dispenseItem("chips", 5.0)).toBe(
+          "Vending machine is out of chips"
+        );
       });
     });
     describe("User buys a soda with 100,000 dollars", () => {
-      it("should return ", () => {
+      it("should return soda 99997.8 Not enough change in machine", () => {
         expect(vendingMachine.dispenseItem("soda", 100000.0)).toBe(
           "soda 99997.8 Not enough change in machine"
         );
@@ -57,16 +59,23 @@ describe("VendingMachine", () => {
       });
     });
     describe("User doesn't choose a snack", () => {
-      it("should return Insufficient funds", () => {
+      it("should return Please give money and choose an item", () => {
         expect(vendingMachine.dispenseItem(10)).toBe(
-          "Please give money and choose and item"
+          "Please give money and choose an item"
         );
       });
     });
     describe("User doesn't provide any funds", () => {
-      it("should return Insufficient funds", () => {
+      it("should return Please give money and choose an item", () => {
         expect(vendingMachine.dispenseItem("candyBar")).toBe(
-          "Please give money and choose and item"
+          "Please give money and choose an item"
+        );
+      });
+    });
+    describe("Print inventory", () => {
+      it("should return chips : 10, soda : 10, cookie : 10, candyBar : 10", () => {
+        expect(vendingMachine.printInventory()).toBe(
+          "chips : 10, soda : 10, cookie : 10, candyBar : 10"
         );
       });
     });
